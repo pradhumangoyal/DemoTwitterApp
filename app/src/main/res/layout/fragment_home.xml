@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipe_view"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.example.pradhuman.my__twitter__app.ScrollViewExt
+        android:id="@+id/scroll_view_ext"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<LinearLayout
+
+    android:id="@+id/my_layout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ProgressBar
+        android:id="@+id/progressBarHome"
+        android:layout_gravity="center|center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    </LinearLayout>
+    </com.example.pradhuman.my__twitter__app.ScrollViewExt>
+</android.support.v4.widget.SwipeRefreshLayout>

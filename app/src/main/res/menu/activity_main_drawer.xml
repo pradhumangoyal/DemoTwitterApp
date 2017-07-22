@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_person_outline_black_24dp"
+            android:title="Profile" />
+        <item
+            android:id="@+id/nav_lists"
+            android:icon="@drawable/ic_message_black_24dp"
+            android:title="Messages" />
+
+
+
+    <item
+        android:id="@+id/nav_settings_privacy"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="Settings and privacy" />
+    <item android:id="@+id/suggestions_nav"
+        android:title="Suggested list"/>
+    <item
+        android:id="@+id/nav_help"
+        android:icon="@drawable/ic_help_outline_black_24dp"
+        android:title="Help Centre" />
+    <item android:id="@+id/logout"
+        android:icon="@drawable/ic_settings_power_black_24dp"
+        android:title="Logout"/>
+
+</menu>

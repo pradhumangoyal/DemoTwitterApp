@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/final_search_swipe_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.pradhuman.my__twitter__app.FinalSearchFragment">
+
+  <!--  &lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;
+   -->
+    <com.example.pradhuman.my__twitter__app.ScrollViewExt
+        android:id="@+id/final_search_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/final_search_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/no_search_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:text="No Search" />
+        </LinearLayout>
+    </com.example.pradhuman.my__twitter__app.ScrollViewExt>
+
+</android.support.v4.widget.SwipeRefreshLayout>
