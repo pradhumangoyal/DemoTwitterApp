@@ -28,6 +28,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pradhuman.my__twitter__app.SuggestedUsers.SuggestedUsers;
 import com.example.pradhuman.my__twitter__app.networking.ApiInterface;
 import com.example.pradhuman.my__twitter__app.networking.GetRetrofit;
 import com.example.pradhuman.my__twitter__app.networking.ProfileResponse;
@@ -175,7 +176,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     de.hdodenhof.circleimageview.CircleImageView imageView = headerLayout.findViewById(R.id.imageViewProfile);
                     if (profileResponse != null) {
                         url = profileResponse.getProfileImage().substring(0,profileResponse.getProfileImage().length()-11)+".jpg";
-                        Picasso.with(HomeActivity.this).load(url).centerCrop().resize(100, 100).into(imageView);
+                        Picasso.with(HomeActivity.this).load(url).centerCrop().resize(200, 200).into(imageView);
                     } else {
                         Picasso.with(HomeActivity.this).load(R.drawable.egg).into(imageView);
                     }
@@ -241,6 +242,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 });
                 AlertDialog dialog = builder.create();
                 dialog.show();
+            }else if(id == R.id.suggestions_nav){
+                startActivity(new Intent(HomeActivity.this, SuggestedUsers.class));
             }
         }
 

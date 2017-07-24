@@ -18,7 +18,8 @@
         android:icon="@drawable/ic_settings_black_24dp"
         android:title="Settings and privacy" />
     <item android:id="@+id/suggestions_nav"
-        android:title="Suggested list"/>
+        android:title="Suggested list"
+        android:icon="@drawable/ic_person_add_black_24dp"/>
     <item
         android:id="@+id/nav_help"
         android:icon="@drawable/ic_help_outline_black_24dp"

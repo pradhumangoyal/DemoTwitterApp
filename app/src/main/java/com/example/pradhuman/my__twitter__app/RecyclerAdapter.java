@@ -46,7 +46,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ListVi
     public void onBindViewHolder(ListViewHolder holder, int position) {
         holder.userTextView.setText("@"+mProfileResponse.get(position).getScreenName());
         holder.fullTextView.setText(mProfileResponse.get(position).getName());
-        Picasso.with(mContext).load(mProfileResponse.get(position).getProfileImage()).centerCrop().resize(50,50).into(holder.imageView);
+        String url = mProfileResponse.get(position).getProfileImage().substring(0,mProfileResponse.get(position).getProfileImage().length()-11)+".jpg";
+        Picasso.with(mContext).load(url).centerCrop().resize(200,200).into(holder.imageView);
     }
 
     @Override

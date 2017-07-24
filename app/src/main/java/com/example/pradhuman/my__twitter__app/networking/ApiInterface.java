@@ -30,7 +30,7 @@ public interface ApiInterface {
     Call<ProfileResponse> getProfileImage(@Query("screen_name")String screenName);
 
     @GET("search/tweets.json")
-    Call<SearchTweetResponse> getSearchTweet(@Query("q")String query);
+    Call<SearchTweetResponse> getSearchTweet(@Query("q")String query, @Query("lang") String lang);
 
     @GET("followers/list.json")
     Call<FollowerResponse> getFollowerList(@Query("cursor") int cursor, @Query("screen_name") String screenName,

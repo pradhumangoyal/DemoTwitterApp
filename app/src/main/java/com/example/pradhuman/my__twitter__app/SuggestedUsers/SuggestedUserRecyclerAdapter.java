@@ -41,8 +41,8 @@ public class SuggestedUserRecyclerAdapter extends RecyclerView.Adapter<Suggested
 
     @Override
     public void onBindViewHolder(SuggestedUserListHolder holder, int position) {
-        holder.countTextView.setText(mSuggestionResponseArrayList.get(position).getSize());
-        holder.titleTextView.setText(mSuggestionResponseArrayList.get(position).getName());
+        holder.countTextView.setText(String.valueOf(mSuggestionResponseArrayList.get(position).getSize()));
+        holder.titleTextView.setText(String.valueOf(mSuggestionResponseArrayList.get(position).getName()));
     }
 
     @Override
@@ -51,17 +51,16 @@ public class SuggestedUserRecyclerAdapter extends RecyclerView.Adapter<Suggested
     }
 
     public class SuggestedUserListHolder extends  RecyclerView.ViewHolder{
-        @BindView(R.id.list_suggested_users_title)
-        TextView titleTextView;
+        public TextView titleTextView;
 
-        @BindView(R.id.count_suggested_users)
-        TextView countTextView;
+        public  TextView countTextView;
 
 
         public SuggestedUserListHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(itemView);
             final int position = getAdapterPosition();
+            countTextView = (TextView) itemView.findViewById(R.id.count_suggested_users);
+            titleTextView = itemView.findViewById(R.id.list_suggested_users_title);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

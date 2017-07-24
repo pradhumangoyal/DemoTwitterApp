@@ -97,7 +97,7 @@ public class FinalSearchFragment extends Fragment {
 
                 if(lastSearch!=null&&!lastSearch.trim().isEmpty()&&lastSearch.trim().equals("#"))
                 {
-                    Call<SearchTweetResponse> call = apiInterface.getSearchTweet(lastSearch);
+                    Call<SearchTweetResponse> call = apiInterface.getSearchTweet(lastSearch, "en");
                     call.enqueue(new Callback<SearchTweetResponse>() {
                         @Override
                         public void onResponse(Call<SearchTweetResponse> call, Response<SearchTweetResponse> response) {
@@ -169,7 +169,7 @@ public class FinalSearchFragment extends Fragment {
                 if(newText!=null&&!newText.trim().isEmpty()&&!newText.trim().equals("#"))
                 {
                     lastSearch = newText;
-                    Call<SearchTweetResponse> call = apiInterface.getSearchTweet(newText);
+                    Call<SearchTweetResponse> call = apiInterface.getSearchTweet(newText, "en");
                     call.enqueue(new Callback<SearchTweetResponse>() {
                         @Override
                         public void onResponse(Call<SearchTweetResponse> call, Response<SearchTweetResponse> response) {
@@ -218,7 +218,7 @@ public class FinalSearchFragment extends Fragment {
                     Tweet tweet = result.data;
                     CompactTweetView compactTweetView = new CompactTweetView(getContext(), tweet);
                     compactTweetView.setTweetActionsEnabled(true);
-                    compactTweetView.setOnClickListener(new View.OnClickListener() {
+                    /*compactTweetView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
@@ -242,7 +242,7 @@ public class FinalSearchFragment extends Fragment {
                             alert.show();
                             Log.i("LoadUrl", "https://twitter.com/" + mUserName + "/status/" + finalIds.get(pos));
                         }
-                    });
+                    });*/
                     mLinearLayout.addView(compactTweetView);
                 }
 

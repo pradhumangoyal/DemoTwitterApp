@@ -41,12 +41,9 @@ public class SuggestedUsers extends AppCompatActivity implements SuggestedUserRe
         toolbar.setTitle("Suggestions");
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mApiInterface = GetRetrofit.getApiInterface();
         hitApi();
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        mAdapter = new SuggestedUserRecyclerAdapter(this,mArrayList);
-        mAdapter.setOnSuggestionListItemClickListener(this);
-        mRecyclerView.setAdapter(mAdapter);
     }
 
     private void hitApi() {
@@ -56,6 +53,10 @@ public class SuggestedUsers extends AppCompatActivity implements SuggestedUserRe
             public void onResponse(Call<ArrayList<SuggestionResponse>> call, Response<ArrayList<SuggestionResponse>> response) {
                 if(response.code()==200){
                     mArrayList = response.body();
+                    mRecyclerView.setLayoutManager(new LinearLayoutManager(SuggestedUsers.this,LinearLayoutManager.VERTICAL,false));
+                    mAdapter = new SuggestedUserRecyclerAdapter(SuggestedUsers.this,mArrayList);
+                    mAdapter.setOnSuggestionListItemClickListener(SuggestedUsers.this);
+                    mRecyclerView.setAdapter(mAdapter);
                 }else{
                     Toast.makeText(SuggestedUsers.this,"Cannot Fetch Suggestions",Toast.LENGTH_SHORT).show();
                 }
@@ -71,7 +72,7 @@ public class SuggestedUsers extends AppCompatActivity implements SuggestedUserRe
 
     @Override
     public void onSuggestionItemClickListener(int count, String slug, String name,View itemView, int position) {
-        ImageView changeImageView = itemView.findViewById(R.id.arrow_change_image_view);
+        /*ImageView changeImageView = itemView.findViewById(R.id.arrow_change_image_view);
         if(changeImageView == null)
             return;
         Animation animation = AnimationUtils.loadAnimation(SuggestedUsers.this,R.anim.rotate);
@@ -83,6 +84,6 @@ public class SuggestedUsers extends AppCompatActivity implements SuggestedUserRe
         }else {
             changeImageView.setTag("R.drawable.ic_keyboard_arrow_down_black_24dp");
 
-        }
+        }*/
     }
 }
