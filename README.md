@@ -7,4 +7,6 @@
 6. Send any direct message.
 7. Delete any Direct message.
 8. Explore the Help.
-9. Finally Logout.
+9. Check the Suggestion List according to Slags Of Interest.
+10. Click on the his Followers/Followings and Check out their Profile.
+11. Finally Logout.
