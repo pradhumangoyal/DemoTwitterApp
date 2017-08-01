@@ -3,6 +3,7 @@
     package="com.example.pradhuman.my__twitter__app">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -58,6 +59,17 @@
         <activity
             android:name=".SuggestedUsers.SuggestedUsers"
             android:label="@string/title_activity_suggested_users"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TrendingActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TrendDetailActivity"
+            android:label="@string/title_activity_trend_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProfileItemClickActivity"
+            android:label="@string/title_activity_profile_item_click"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

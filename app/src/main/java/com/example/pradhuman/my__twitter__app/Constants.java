@@ -26,4 +26,7 @@ public class Constants {
     public static final String INTENT_PROFILE_RESPONSE = "profile_response";
     public static final String SUPPORT_HELP = "https://support.twitter.com";
     public static final String INTENT_USER_ID = "_id_intent";
+    public static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 132;
+    public static final String INTENT_LIST_ITEM_QUERY = "list_item_query";
+    public static final String PROFILE_DETAIL_INTENT = "profile_intent_detail";
 }

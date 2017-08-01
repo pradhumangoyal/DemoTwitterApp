@@ -5,17 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.pradhuman.my__twitter__app.SuggestedUsers.SuggestedUsers"
     tools:showIn="@layout/activity_suggested_users">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/content_suggested_users_recycler_view"
+    <ExpandableListView
+        android:id="@+id/lvExp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFF"
-        >
-
-    </android.support.v7.widget.RecyclerView>
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="0.5dp"
+        android:childDivider="@color/blue_primary_dark"
+        android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft" />
 
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.example.pradhuman.my__twitter__app.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.pradhuman.my__twitter__app.Constants;
+import com.example.pradhuman.my__twitter__app.ProfileDetailActivity;
 import com.example.pradhuman.my__twitter__app.R;
 import com.example.pradhuman.my__twitter__app.RecyclerAdapter;
 import com.example.pradhuman.my__twitter__app.networking.ApiInterface;
@@ -28,13 +30,13 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 
-public class FollowersFragment extends Fragment {
+public class FollowersFragment extends Fragment implements RecyclerAdapter.OnItemClickListener {
 
     ProfileResponse mProfileResponse;
     View rootView;
     ApiInterface mApiInterface;
     RecyclerView mRecyclerView;
-
+    ArrayList<ProfileResponse> mProfileArrayList;
     public FollowersFragment() {
         // Required empty public constructor
     }
@@ -55,6 +57,7 @@ public class FollowersFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_followers, container, false);
         mRecyclerView = rootView.findViewById(R.id.fragment_follower_recycler_view);
         mApiInterface = GetRetrofit.getApiInterface();
+        mProfileArrayList = new ArrayList<>();
         Call<FollowerResponse> followerResponseCall = mApiInterface.getFollowerList(-1,mProfileResponse.getScreenName(),false,true);
         followerResponseCall.enqueue(new Callback<FollowerResponse>() {
             @Override
@@ -62,6 +65,7 @@ public class FollowersFragment extends Fragment {
                 try {
                     FollowerResponse followerResponse = response.body();
                     ArrayList<ProfileResponse> profileResponseArrayList = followerResponse.getProfileResponses();
+                    mProfileArrayList = profileResponseArrayList;
                     onDownloadComplete(profileResponseArrayList);
                 }catch (Exception e){
                     Snackbar.make(rootView,"Can't load now! Try Again Later",Snackbar.LENGTH_SHORT).show();
@@ -78,9 +82,17 @@ public class FollowersFragment extends Fragment {
 
     private void onDownloadComplete(ArrayList<ProfileResponse> profileResponseArrayList) {
         RecyclerAdapter adapter = new RecyclerAdapter(getContext(),profileResponseArrayList);
+        adapter.setOnItemClickListener(this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
         mRecyclerView.setAdapter(adapter);
 
     }
 
+    @Override
+    public void onItemClickListener(int pos, View view) {
+        ProfileResponse profileResponse = mProfileArrayList.get(pos);
+        Intent intent = new Intent(getContext(), ProfileDetailActivity.class);
+        intent.putExtra(Constants.INTENT_PROFILE_RESPONSE,profileResponse);
+        startActivity(intent);
+    }
 }

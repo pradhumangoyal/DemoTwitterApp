@@ -58,9 +58,14 @@ public interface ApiInterface {
     @POST("direct_messages/destroy.json")
     Call<PostResponse> postDestroyMessage(@Query("id") String id);
 
-    @GET("users/suggestions.json")
-    Call<ArrayList<SuggestionResponse> > getSuggestionResponse(@Query("lang") String lang);
-
     @GET("users/suggestions/{slug}.json")
     Call<SlugResponse> getSuggestionSlug(@Query("lang") String lang, @Path("slug") String slug);
+
+    @GET("trends/place.json")
+    Call<ArrayList<TrendResponse>> getTrends(@Query("id") String id);
+
+    @GET("trends/closest.json")
+    Call<ArrayList<LocationResponse>> getLocationWEID(@Query("lat") String latitude, @Query("long") String longitude);
+
+
 }

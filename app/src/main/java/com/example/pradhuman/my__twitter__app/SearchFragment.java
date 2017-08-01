@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.pradhuman.my__twitter__app.networking.ApiInterface;
 import com.example.pradhuman.my__twitter__app.networking.GetRetrofit;
+import com.example.pradhuman.my__twitter__app.networking.NewApiInterface;
+import com.example.pradhuman.my__twitter__app.networking.NewRetrofit;
 import com.example.pradhuman.my__twitter__app.networking.PostResponse;
 import com.example.pradhuman.my__twitter__app.networking.ProfileResponse;
 import com.twitter.sdk.android.core.OAuthSigning;
@@ -47,7 +49,7 @@ public class SearchFragment extends Fragment implements CustomAdapter.OnTweetCli
     ProgressBar mProgressBar;
     ApiInterface mApiInterface;
     View rootView;
-
+    ListView listView;
     public SearchFragment() {
         // Required empty public constructor
     }
@@ -75,11 +77,8 @@ public class SearchFragment extends Fragment implements CustomAdapter.OnTweetCli
         final UserTimeline userTimeline = new UserTimeline.Builder()
                 .screenName(mUserName)
                 .build();
-        final TweetTimelineListAdapter adapter = new TweetTimelineListAdapter.Builder(this.getContext())
-                .setTimeline(userTimeline)
-                .build();
         mProgressBar.setVisibility(View.GONE);
-        ListView listView = rootView.findViewById(R.id.user_list);
+         listView = rootView.findViewById(R.id.user_list);
         customAdapter = new CustomAdapter(getContext(), userTimeline, this);
         listView.setAdapter(customAdapter);
         listView.setEmptyView(inflater.inflate(R.layout.list_empty_view, container, false));
@@ -112,6 +111,7 @@ public class SearchFragment extends Fragment implements CustomAdapter.OnTweetCli
     @Override
     public void onTweetClicked(int position, final Tweet tweet) {
         mApiInterface = GetRetrofit.getApiInterface();
+        final NewApiInterface apiInterface = NewRetrofit.getApiInterface();
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setCancelable(false);
         builder.setTitle("Delete Tweet");
@@ -119,7 +119,7 @@ public class SearchFragment extends Fragment implements CustomAdapter.OnTweetCli
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Call<PostResponse> call = mApiInterface.getDestroyTweet(tweet.getId());
+                Call<PostResponse> call = apiInterface.getDestroyTweet(tweet.getId());
                 Log.i("Final Url id", String.valueOf(tweet.getId()));
                 call.enqueue(new Callback<PostResponse>() {
                     @Override
@@ -128,7 +128,14 @@ public class SearchFragment extends Fragment implements CustomAdapter.OnTweetCli
                         if (response.code() != 200) {
                             Toast.makeText(getContext(), "Can't Delete This tweet now!", Toast.LENGTH_SHORT).show();
                         } else {
-                            onResume();
+                            Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
+                            mProgressBar.setVisibility(View.VISIBLE);
+                            final UserTimeline userTimeline = new UserTimeline.Builder()
+                                    .screenName(mUserName)
+                                    .build();
+                            mProgressBar.setVisibility(View.GONE);
+                            customAdapter = new CustomAdapter(getContext(), userTimeline, SearchFragment.this);
+                            listView.setAdapter(customAdapter);
                         }
                     }
 
@@ -166,8 +173,4 @@ public class SearchFragment extends Fragment implements CustomAdapter.OnTweetCli
                 .build();
         mProgressBar.setVisibility(View.GONE);
     }
-}
-interface CustomService {
-    @GET("/1.1/users/show.json")
-    Call<ProfileResponse>  show(@Query("user_id") long id);
 }

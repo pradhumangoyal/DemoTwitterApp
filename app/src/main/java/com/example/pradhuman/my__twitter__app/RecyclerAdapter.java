@@ -23,9 +23,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ListVi
     private Context mContext;
     private ArrayList<ProfileResponse> mProfileResponse;
     OnLongItemClickListener mListener;
-
+    OnItemClickListener mShortListener;
     public void setOnItemLongClickListener(OnLongItemClickListener listener){
         mListener = listener;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        mShortListener = listener;
     }
 
     public RecyclerAdapter(Context mContext, ArrayList<ProfileResponse> mProfileResponse) {
@@ -74,10 +78,23 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ListVi
                     return true;
                 }
             });
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(mShortListener!=null){
+                        mShortListener.onItemClickListener(getAdapterPosition(), itemView);
+                    }
+                }
+            });
+
         }
     }
     public interface OnLongItemClickListener {
         void onLonggItemClickListener(int pos, View view);
+    }
+    public interface OnItemClickListener{
+        void onItemClickListener(int pos, View view);
     }
 
 }

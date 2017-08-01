@@ -70,7 +70,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     Bundle b;
     boolean doubleBackToExitPressedOnce = false;
     OkHttpClient client;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -217,7 +216,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             intent.putExtra(Constants.INTENT_PROFILE_RESPONSE, profileResponse);
             startActivity(intent);
 
-        } else if (id == R.id.nav_settings_privacy) {
+        } else if (id == R.id.nav_trending) {
+            startActivity(new Intent(HomeActivity.this, TrendingActivity.class));
 
         } else {
             if (id == R.id.logout) {

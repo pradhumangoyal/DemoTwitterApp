@@ -14,9 +14,9 @@
 
 
     <item
-        android:id="@+id/nav_settings_privacy"
-        android:icon="@drawable/ic_settings_black_24dp"
-        android:title="Settings and privacy" />
+        android:id="@+id/nav_trending"
+        android:icon="@drawable/ic_trending_up_black_24dp"
+        android:title="Trending" />
     <item android:id="@+id/suggestions_nav"
         android:title="Suggested list"
         android:icon="@drawable/ic_person_add_black_24dp"/>
