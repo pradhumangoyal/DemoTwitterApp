@@ -16,6 +16,18 @@ Simple Twitter Demo App.
 11. Trending In your Location
 12. Finally Logout.
 
+## Developer setup ##
+
+#### API Key ####
+
+The app uses twitter.com API to get movie information and posters. You must provide your own [API key](https://dev.twitter.com/) in order to build the app.
+
+Just put your Consumer key and Consumer Secret Key into `~/.gradle/gradle.properties` file (create the file if it does not exist already):
+```gradle
+CONSUMER_KEY ="abcdefghijklmnopqrstuvwxyz"
+CONSUMER_SECRET ="abcdefghijklmnopqrstuvwxyz"
+```
+
 ### Screenshots ###
 
 * <h3>Splash-Activity</h3>
