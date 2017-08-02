@@ -5,8 +5,8 @@ package com.example.pradhuman.my__twitter__app;
  */
 
 public class Constants {
-    public static final String CONSUMER_KEY = "PbFPzxzjOZmlhDafaoiYNPTUn";
-    public static final String CONSUMER_SECRET = "yLflJps93Ke8EFb0lHgBRiq9fBcgORdVGQRd1lYUg7PqX6tfDk";
+    public static final String CONSUMER_KEY = BuildConfig.CONSUMER_KEY;
+    public static final String CONSUMER_SECRET = BuildConfig.CONSUMER_SECRET;
     public static final String SHARED_PREFERENCES_APP_NAME = "My__Twitter__App";
     public static final String SHARED_PREFERENCES_STRING_SET = "login_credentials";
     public static final String AUHENTICATED_TOKEN = "authenticated_token";
