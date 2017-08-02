@@ -1,4 +1,8 @@
 # DemoTwitterApp
+Simple Twitter Demo App.
+
+## Features ##
+
 1. The user can view Home Timeline, User Timeline, His Favourites and search any other user.
 2. He can post a tweet, delete his own tweet, like or dislike any tweet.
 3. He can check out his own Profile, which shows his followers and following count and list.
@@ -11,6 +15,8 @@
 10. Click on the his Followers/Followings and Check out their Profile.
 11. Trending In your Location
 12. Finally Logout.
+
+### Screenshots ###
 
 * <h3>Splash-Activity</h3>
 
