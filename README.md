@@ -14,7 +14,8 @@ Simple Twitter Demo App.
 9. Check the Suggestion List according to Slags Of Interest.
 10. Click on the his Followers/Followings and Check out their Profile.
 11. Trending In your Location
-12. Finally Logout.
+12. Follow anyone from suggestion list.
+13. Finally Logout.
 
 ## Developer setup ##
 
