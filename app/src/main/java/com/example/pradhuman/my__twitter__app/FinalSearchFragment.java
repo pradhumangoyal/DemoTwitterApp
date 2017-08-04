@@ -130,22 +130,8 @@ public class FinalSearchFragment extends Fragment {
             }
         });
         mScrollViewExt = rootView.findViewById(R.id.final_search_scroll_view);
-        OAuthInterceptor oauth1Woocommerce = new OAuthInterceptor.Builder()
-                .consumerKey(Constants.CONSUMER_KEY)
-                .consumerSecret(Constants.CONSUMER_SECRET)
-                .userToken(mToken)
-                .userSecret(mSecret)
-                .build();
-        OkHttpClient client = new OkHttpClient.Builder()
-                .addInterceptor(oauth1Woocommerce)// Interceptor oauth1Woocommerce added
-                .build();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.twitter.com/1.1/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
-                .build();
         finalIds = new ArrayList<String>();
-        apiInterface = retrofit.create(ApiInterface.class);
+        apiInterface = GetRetrofit.getApiInterface();
         return rootView;
     }
 
