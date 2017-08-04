@@ -76,7 +76,7 @@ public class NotificationFragment extends Fragment {
         mProgressBar = rootView.findViewById(R.id.progressBarNotification);
         mProgressBar.setVisibility(View.VISIBLE);
         mScrollViewExt = rootView.findViewById(R.id.scroll_view_ext_fragment_notification);
-        getRetrofit();
+        
         hitApi();
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -88,25 +88,10 @@ public class NotificationFragment extends Fragment {
         return rootView;
     }
 
-    public void getRetrofit() {
-        OAuthInterceptor oauth1Woocommerce = new OAuthInterceptor.Builder()
-                .consumerKey(Constants.CONSUMER_KEY)
-                .consumerSecret(Constants.CONSUMER_SECRET)
-                .userToken(mToken)
-                .userSecret(mSecret)
-                .build();
-        OkHttpClient client = new OkHttpClient.Builder()
-                .addInterceptor(oauth1Woocommerce)// Interceptor oauth1Woocommerce added
-                .build();
-        mRetrofit = new Retrofit.Builder()
-                .baseUrl("https://api.twitter.com/1.1/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
-                .build();
-    }
+   
 
     public void hitApi() {
-        final ApiInterface apiInterface = mRetrofit.create(ApiInterface.class);
+        final ApiInterface apiInterface = GetRetrofit.getApiInterface();
         Call<List<TweetResponse>> call = apiInterface.getTweetsArrayList(mUserName, 20);
         call.enqueue(new Callback<List<TweetResponse>>() {
             @Override
